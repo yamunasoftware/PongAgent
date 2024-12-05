@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PongAgent-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: PongAgent
+  template:
+    metadata:
+      labels:
+        app: PongAgent
+    spec:
+      containers:
+      - name: PongAgent-container
+        image: PongAgent
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: PongAgent-service
+spec:
+  selector:
+    app: PongAgent
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
