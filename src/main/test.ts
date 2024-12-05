@@ -111,7 +111,28 @@ function testOpposition(): boolean {
   return assertion;
 }
 
+// Test Scores Function:
+function testScores(): boolean {
+  const environment = new Environment();
+  const lastScores = JSON.stringify(environment.getScores());
+  let assertion = false;
+
+  for (let i = 0; i < 10000; i++) {
+    environment.update();
+    const currentScores = environment.getScores();
+    
+    if (JSON.stringify(currentScores) !== lastScores) {
+      assertion = true;
+    }
+
+    else {
+      assertion = false;
+    }
+  }
+  return assertion;
+}
+
 /* -------------------------------------------------------------------------------- */
 
 import Environment from './main.js';
-testExecution([testWeights, testMovement, testOpposition]);
+testExecution([testWeights, testMovement, testOpposition, testScores]);

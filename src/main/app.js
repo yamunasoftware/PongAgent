@@ -5,7 +5,7 @@ import '../public/style.css';
 // App Component Function:
 export default function App() {
   const canvasRef = useRef(null);
-  const width = 600, height = 300;
+  const width = 500, height = 500;
   const environment = new Environment();
 
   useEffect(() => {
@@ -77,4 +77,9 @@ function renderCanvas(environment, context, width, height) {
     paddleWidth, 
     paddleHeight
   );
+
+  // Display Scores:
+  context.font = "50px Arial";
+  context.fillText(environment.getScores()[0], (width * 0.2), (height * 0.52));
+  context.fillText(environment.getScores()[1], (width * 0.75), (height * 0.52));
 }
