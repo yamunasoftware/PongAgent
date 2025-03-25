@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: PongAgent-deployment
+  name: pongagent-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: PongAgent
+      app: pongagent
   template:
     metadata:
       labels:
-        app: PongAgent
+        app: pongagent
     spec:
       containers:
-      - name: PongAgent-container
-        image: PongAgent
+      - name: pongagent-container
+        image: pongagent
         ports:
         - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: PongAgent-service
+  name: pongagent-service
 spec:
   selector:
-    app: PongAgent
+    app: pongagent
   ports:
     - protocol: TCP
       port: 80

@@ -15,8 +15,8 @@ The testing framework is a custom Unit Testing framework, specifically built for
 To use Docker, you can follow the following commands to build and deploy the API:
 
 ```
-docker build -t PongAgent .
-docker run -d -p 3000:3000 PongAgent
+docker build -t pongagent .
+docker run -d -p 3000:3000 pongagent
 ```
 
 To deploy the Docker image on Kubernetes, you can use the provided deployment.yaml file. To, deploy follow the commands below:
@@ -27,7 +27,3 @@ kubectl get deployment
 kubectl get pods
 kubectl get svc
 ```
-
-## Dependencies
-
-The dependencies for this application are explicitly listed in the ```package.json```, but there is no need to worry about the dependencies. The dependencies are automatically installed in the ```deploy.sh``` script. Also, the dependencies are installed when building the Docker container. The only dependencies needed are Node.js and NPM. Additionally, when building the Docker container, Node.js and NPM are installed. 
