@@ -9,21 +9,3 @@ PongAgent is a double player reinforcement learning agent for the popular video 
 The application wrapper for the app was written in the React Framework in JavaScript. As mentioned before, the main functionality of the application is written in TypeScript, which is compiled into JavaScript. The application obviously needs to be deployed and run on a server, which is also built into the functionality of the application. The deployment of the application is contained within the ```deploy.sh``` script, which is a custom CI/CD pipeline to deploy the server. This approach of doing all in one pipeline may not be the best for all applications. However, in this case, using a CI/CD pipeline which does dependency installation, compilation, testing, and deployment is actually highly efficient.
 
 The testing framework is a custom Unit Testing framework, specifically built for testing the learning functionality of the reinforcement agents. The unit tests are meant to test the effectiveness of the changing learning done by the agent and opposition agent, both of which run on the same learning method.
-
-## Docker and Kubernetes
-
-To use Docker, you can follow the following commands to build and deploy the API:
-
-```
-docker build -t pongagent .
-docker run -d -p 3000:3000 pongagent
-```
-
-To deploy the Docker image on Kubernetes, you can use the provided deployment.yaml file. To, deploy follow the commands below:
-
-```
-kubectl apply -f deployment.yaml
-kubectl get deployment
-kubectl get pods
-kubectl get svc
-```
