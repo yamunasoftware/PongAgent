@@ -1,9 +1,12 @@
 FROM node:latest
 WORKDIR /main
+USER root
 
-COPY package*.json ./
+COPY src/package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 3000
 
-CMD ["bash", "deploy.sh"]
+EXPOSE 8080
+RUN npx tsc -p /main/src/main
+WORKDIR /main/src/
+CMD ["npm", "start"]
